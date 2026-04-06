@@ -7,7 +7,6 @@
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
-  /* ── Dark mode (default) ── */
   body {
     --bg:           #0a0a0a;
     --bg-stars:     radial-gradient(ellipse at center, #1a1a2e 0%, #0a0a0a 70%);
@@ -37,7 +36,6 @@
     transition: background 0.3s, color 0.3s;
   }
 
-  /* ── Light mode ── */
   body.light {
     --bg:           #f5f0e8;
     --bg-stars:     none;
@@ -61,7 +59,6 @@
     --toggle-color: #7a6040;
   }
 
-  /* Stars — hidden in light mode */
   .stars {
     position: fixed;
     top: 0; left: 0;
@@ -89,11 +86,9 @@
       radial-gradient(1px 1px at 75% 10%, rgba(255,255,255,0.5) 0%, transparent 100%);
   }
 
-  /* Toggle button */
   .mode-toggle {
     position: fixed;
-    top: 20px;
-    right: 20px;
+    top: 20px; right: 20px;
     background: var(--toggle-bg);
     border: 1px solid var(--border);
     color: var(--toggle-color);
@@ -106,16 +101,9 @@
     z-index: 100;
     transition: all 0.2s;
   }
-  .mode-toggle:hover {
-    border-color: var(--accent-red);
-    color: var(--text);
-  }
+  .mode-toggle:hover { border-color: var(--accent-red); color: var(--text); }
 
-  .container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 60px 20px;
-  }
+  .container { max-width: 800px; margin: 0 auto; padding: 60px 20px; }
 
   header {
     text-align: center;
@@ -124,32 +112,20 @@
   }
 
   .series-title {
-    font-size: 13px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: var(--accent-gold);
-    margin-bottom: 20px;
+    font-size: 13px; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--accent-gold); margin-bottom: 20px;
   }
 
   h1 {
     font-size: clamp(36px, 8vw, 64px);
-    color: var(--text-head);
-    font-weight: normal;
-    letter-spacing: 2px;
-    line-height: 1.2;
-    margin-bottom: 12px;
+    color: var(--text-head); font-weight: normal;
+    letter-spacing: 2px; line-height: 1.2; margin-bottom: 12px;
   }
 
-  .tagline {
-    font-size: 18px;
-    color: var(--tagline);
-    font-style: italic;
-    margin-bottom: 30px;
-  }
+  .tagline { font-size: 18px; color: var(--tagline); font-style: italic; margin-bottom: 30px; }
 
   .firefly {
-    display: inline-block;
-    width: 12px; height: 12px;
+    display: inline-block; width: 12px; height: 12px;
     background: radial-gradient(circle, #f5a623 0%, #e8820c 50%, transparent 100%);
     border-radius: 50%;
     box-shadow: 0 0 20px 8px rgba(245,166,35,0.3);
@@ -180,7 +156,7 @@
   .episodes { padding:50px 0; border-bottom:1px solid var(--border); }
   .episode-list { list-style:none; }
   .episode-list li { padding:14px 0; border-bottom:1px solid var(--border-ep); display:flex; align-items:baseline; gap:16px; }
-  .ep-num { font-size:11px; color:var(--accent-red); letter-spacing:2px; min-width:32px; font-variant-numeric:tabular-nums; }
+  .ep-num { font-size:11px; color:var(--accent-red); letter-spacing:2px; min-width:32px; }
   .ep-link { color:var(--link); text-decoration:none; font-size:16px; transition:color 0.2s; flex:1; }
   .ep-link:hover { color:var(--link-hover); }
   .ep-subtitle { font-size:13px; color:var(--text-faint); font-style:italic; }
@@ -195,10 +171,9 @@
 
   .contribute { padding:50px 0; border-bottom:1px solid var(--border); }
   .contribute p { color:var(--text-muted); margin-bottom:16px; font-size:16px; }
-
   .rules { list-style:none; margin:20px 0; }
   .rules li { padding:8px 0 8px 20px; position:relative; color:var(--text-muted); font-size:15px; }
-  .rules li::before { content:'—'; position:absolute; left:0; color:var(--accent-red); }
+  .rules li::before { content:'\2014'; position:absolute; left:0; color:var(--accent-red); }
 
   .github-btn {
     display:inline-block; margin-top:20px; padding:12px 28px;
@@ -215,8 +190,7 @@
 <body>
 
 <div class="stars"></div>
-
-<button class="mode-toggle" onclick="toggleMode()" id="toggle-btn">☀ Light</button>
+<button class="mode-toggle" onclick="toggleMode()" id="toggle-btn">&#9728; Light</button>
 
 <div class="container">
 
@@ -266,16 +240,16 @@
   <section class="episodes">
     <h2>Season One Episodes</h2>
     <ul class="episode-list">
-      <li><span class="ep-num">01</span><a class="ep-link" href="https://github.com/owenmcconaghy-png/FIREFLY-LEGACY/blob/main/episodes/episode_01.md">SHINY</a><span class="ep-subtitle">Three strangers, one legend, and a very old ship have the worst night of their lives.</span></li>
-      <li><span class="ep-num">02</span><a class="ep-link" href="https://github.com/owenmcconaghy-png/FIREFLY-LEGACY/blob/main/episodes/episode_02.md">Same Sky, Different Dust</a><span class="ep-subtitle">A ship remembers what she is.</span></li>
-      <li><span class="ep-num">03</span><a class="ep-link" href="https://github.com/owenmcconaghy-png/FIREFLY-LEGACY/blob/main/episodes/episode_03.md">Dave</a><span class="ep-subtitle">The crew meet Dave.</span></li>
-      <li><span class="ep-num">04</span><a class="ep-link" href="https://github.com/owenmcconaghy-png/FIREFLY-LEGACY/blob/main/episodes/episode_04.md">Leaf on the Wind</a><span class="ep-subtitle">A dead man teaches his daughter how to fly.</span></li>
-      <li><span class="ep-num">05</span><a class="ep-link" href="https://github.com/owenmcconaghy-png/FIREFLY-LEGACY/blob/main/episodes/episode_05.md">A Mother and Companion</a><span class="ep-subtitle">Saff Reynolds goes to find her mother.</span></li>
-      <li><span class="ep-num">06</span><a class="ep-link" href="https://github.com/owenmcconaghy-png/FIREFLY-LEGACY/blob/main/episodes/episode_06.md">Baby</a><span class="ep-subtitle">The Browncoat job. Jayne gets shot. Simon and Kaylee.</span></li>
-      <li><span class="ep-num">07</span><a class="ep-link" href="https://github.com/owenmcconaghy-png/FIREFLY-LEGACY/blob/main/episodes/episode_07.md">Signal</a><span class="ep-subtitle">The black boxes. New Wave. What was buried and why.</span></li>
-      <li><span class="ep-num">08</span><a class="ep-link" href="https://github.com/owenmcconaghy-png/FIREFLY-LEGACY/blob/main/episodes/episode_08.md">Running</a><span class="ep-subtitle">The cavalry is called.</span></li>
-      <li><span class="ep-num">09</span><a class="ep-link" href="https://github.com/owenmcconaghy-png/FIREFLY-LEGACY/blob/main/episodes/episode_09.md">The Cavalry</a><span class="ep-subtitle">Mal and Zoe board. The test world. The plan.</span></li>
-      <li><span class="ep-num">10</span><a class="ep-link" href="https://github.com/owenmcconaghy-png/FIREFLY-LEGACY/blob/main/episodes/episode_10.md">The Ghost in the Machine</a><span class="ep-subtitle">The planet. River. The passing of the baton.</span></li>
+      <li><span class="ep-num">01</span><a class="ep-link" href="episode.html?ep=01">SHINY</a><span class="ep-subtitle">Three strangers, one legend, and a very old ship have the worst night of their lives.</span></li>
+      <li><span class="ep-num">02</span><a class="ep-link" href="episode.html?ep=02">Same Sky, Different Dust</a><span class="ep-subtitle">A ship remembers what she is.</span></li>
+      <li><span class="ep-num">03</span><a class="ep-link" href="episode.html?ep=03">Dave</a><span class="ep-subtitle">The crew meet Dave.</span></li>
+      <li><span class="ep-num">04</span><a class="ep-link" href="episode.html?ep=04">Leaf on the Wind</a><span class="ep-subtitle">A dead man teaches his daughter how to fly.</span></li>
+      <li><span class="ep-num">05</span><a class="ep-link" href="episode.html?ep=05">A Mother and Companion</a><span class="ep-subtitle">Saff Reynolds goes to find her mother.</span></li>
+      <li><span class="ep-num">06</span><a class="ep-link" href="episode.html?ep=06">Baby</a><span class="ep-subtitle">The Browncoat job. Jayne gets shot. Simon and Kaylee.</span></li>
+      <li><span class="ep-num">07</span><a class="ep-link" href="episode.html?ep=07">Signal</a><span class="ep-subtitle">The black boxes. New Wave. What was buried and why.</span></li>
+      <li><span class="ep-num">08</span><a class="ep-link" href="episode.html?ep=08">Running</a><span class="ep-subtitle">The cavalry is called.</span></li>
+      <li><span class="ep-num">09</span><a class="ep-link" href="episode.html?ep=09">The Cavalry</a><span class="ep-subtitle">Mal and Zoe board. The test world. The plan.</span></li>
+      <li><span class="ep-num">10</span><a class="ep-link" href="episode.html?ep=10">The Ghost in the Machine</a><span class="ep-subtitle">The planet. River. The passing of the baton.</span></li>
     </ul>
   </section>
 
@@ -314,25 +288,20 @@
 
 <script>
   const btn = document.getElementById('toggle-btn');
-
   function applyMode(mode) {
     if (mode === 'light') {
       document.body.classList.add('light');
-      btn.textContent = '☾ Dark';
+      btn.textContent = '\u263E Dark';
     } else {
       document.body.classList.remove('light');
-      btn.textContent = '☀ Light';
+      btn.textContent = '\u2600 Light';
     }
   }
-
   function toggleMode() {
-    const isLight = document.body.classList.contains('light');
-    const next = isLight ? 'dark' : 'light';
+    const next = document.body.classList.contains('light') ? 'dark' : 'light';
     localStorage.setItem('firefly-mode', next);
     applyMode(next);
   }
-
-  // On load — apply saved preference, default dark
   applyMode(localStorage.getItem('firefly-mode') || 'dark');
 </script>
 

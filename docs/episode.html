@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Firefly: Legacy</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    --bg:          #0a0a0a;
+    --text:        #d4c5a9;
+    --text-dim:    #c4b08a;
+    --text-head:   #f0e6d0;
+    --border:      #3a2a1a;
+    --accent-gold: #8b6914;
+    --accent-red:  #8b2500;
+    --accent-red-h:#a83000;
+    --blockquote:  #1a1410;
+    --toggle-bg:   rgba(255,255,255,0.06);
+    --toggle-color:#8b7355;
+    --nav-bg:      rgba(10,10,10,0.9);
+    background: var(--bg);
+    color: var(--text);
+    font-family: Georgia, 'Times New Roman', serif;
+    line-height: 1.9;
+    min-height: 100vh;
+    transition: background 0.3s, color 0.3s;
+  }
+
+  body.light {
+    --bg:          #f5f0e8;
+    --text:        #2c2218;
+    --text-dim:    #4a3820;
+    --text-head:   #1a1008;
+    --border:      #c8b99a;
+    --accent-gold: #8b6914;
+    --accent-red:  #8b2500;
+    --accent-red-h:#a83000;
+    --blockquote:  #ede5d8;
+    --toggle-bg:   rgba(0,0,0,0.06);
+    --toggle-color:#7a6040;
+    --nav-bg:      rgba(245,240,232,0.95);
+  }
+
+  /* Top nav bar */
+  .nav {
+    position: sticky;
+    top: 0;
+    background: var(--nav-bg);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 24px;
+    z-index: 100;
+  }
+
+  .nav-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .back-link {
+    color: var(--accent-gold);
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .back-link:hover { color: var(--text-head); }
+
+  .nav-title {
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent-gold);
+  }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .raw-link {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--toggle-color);
+    text-decoration: none;
+    border: 1px solid var(--border);
+    padding: 6px 12px;
+    transition: all 0.2s;
+  }
+  .raw-link:hover { border-color: var(--accent-red); color: var(--text-head); }
+
+  .mode-toggle {
+    background: var(--toggle-bg);
+    border: 1px solid var(--border);
+    color: var(--toggle-color);
+    font-family: Georgia, serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .mode-toggle:hover { border-color: var(--accent-red); color: var(--text-head); }
+
+  /* Content */
+  .container {
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 60px 24px 100px;
+  }
+
+  #content h1 {
+    font-size: clamp(28px, 5vw, 42px);
+    color: var(--text-head);
+    font-weight: normal;
+    letter-spacing: 1px;
+    line-height: 1.2;
+    margin: 40px 0 8px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  #content h2 {
+    font-size: clamp(18px, 3vw, 24px);
+    color: var(--text-head);
+    font-weight: normal;
+    letter-spacing: 1px;
+    margin: 48px 0 4px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  #content h3 {
+    font-size: 16px;
+    color: var(--accent-gold);
+    font-weight: normal;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 32px 0 4px;
+  }
+
+  #content p {
+    margin: 16px 0;
+    color: var(--text-dim);
+    font-size: 17px;
+  }
+
+  #content hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 36px 0;
+  }
+
+  /* Dialogue blockquotes */
+  #content blockquote {
+    background: var(--blockquote);
+    border-left: 2px solid var(--accent-red);
+    margin: 20px 0;
+    padding: 14px 20px;
+    border-radius: 0 2px 2px 0;
+  }
+
+  #content blockquote p {
+    margin: 6px 0;
+    color: var(--text);
+    font-size: 16px;
+  }
+
+  #content blockquote p:first-child { margin-top: 0; }
+  #content blockquote p:last-child  { margin-bottom: 0; }
+
+  #content strong { color: var(--text-head); }
+  #content em { color: var(--text-dim); font-style: italic; }
+
+  /* Italic sluglines */
+  #content p > em:only-child {
+    display: block;
+    font-size: 13px;
+    letter-spacing: 1px;
+    color: var(--accent-gold);
+    margin: 28px 0 4px;
+  }
+
+  /* Loading / error */
+  .status {
+    text-align: center;
+    padding: 80px 0;
+    color: var(--accent-gold);
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  /* Episode nav footer */
+  .ep-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 80px;
+    padding-top: 30px;
+    border-top: 1px solid var(--border);
+  }
+
+  .ep-nav a {
+    color: var(--accent-gold);
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .ep-nav a:hover { color: var(--text-head); }
+  .ep-nav .placeholder { opacity: 0; pointer-events: none; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-left">
+    <a class="back-link" href="index.html">&larr; All Episodes</a>
+    <span class="nav-title" id="nav-ep-label">Firefly: Legacy</span>
+  </div>
+  <div class="nav-right">
+    <a class="raw-link" id="raw-link" href="#" target="_blank">Raw &nearr;</a>
+    <button class="mode-toggle" onclick="toggleMode()" id="toggle-btn">&#9728; Light</button>
+  </div>
+</nav>
+
+<div class="container">
+  <div id="content"><div class="status">Loading&hellip;</div></div>
+  <div class="ep-nav" id="ep-nav"></div>
+</div>
+
+<script>
+  const EPISODES = [
+    { num: '01', title: 'SHINY' },
+    { num: '02', title: 'Same Sky, Different Dust' },
+    { num: '03', title: 'Dave' },
+    { num: '04', title: 'Leaf on the Wind' },
+    { num: '05', title: 'A Mother and Companion' },
+    { num: '06', title: 'Baby' },
+    { num: '07', title: 'Signal' },
+    { num: '08', title: 'Running' },
+    { num: '09', title: 'The Cavalry' },
+    { num: '10', title: 'The Ghost in the Machine' },
+  ];
+
+  const params = new URLSearchParams(window.location.search);
+  const ep = (params.get('ep') || '01').padStart(2, '0');
+  const epIndex = EPISODES.findIndex(e => e.num === ep);
+  const epData = EPISODES[epIndex] || EPISODES[0];
+
+  const rawUrl = `https://raw.githubusercontent.com/owenmcconaghy-png/FIREFLY-LEGACY/main/episodes/episode_${ep}.md`;
+
+  // Set page title and nav
+  document.title = `${epData.title} — Firefly: Legacy`;
+  document.getElementById('nav-ep-label').textContent = `Ep ${ep} — ${epData.title}`;
+  document.getElementById('raw-link').href = rawUrl;
+
+  // Episode prev/next nav
+  const navEl = document.getElementById('ep-nav');
+  const prev = EPISODES[epIndex - 1];
+  const next = EPISODES[epIndex + 1];
+  navEl.innerHTML = `
+    ${prev ? `<a href="episode.html?ep=${prev.num}">&larr; Ep ${prev.num}: ${prev.title}</a>` : '<span class="placeholder">prev</span>'}
+    <a href="index.html">All Episodes</a>
+    ${next ? `<a href="episode.html?ep=${next.num}">Ep ${next.num}: ${next.title} &rarr;</a>` : '<span class="placeholder">next</span>'}
+  `;
+
+  // Fetch and render markdown
+  marked.setOptions({ breaks: false, gfm: true });
+
+  fetch(rawUrl)
+    .then(r => {
+      if (!r.ok) throw new Error('Not found');
+      return r.text();
+    })
+    .then(md => {
+      document.getElementById('content').innerHTML = marked.parse(md);
+    })
+    .catch(() => {
+      document.getElementById('content').innerHTML =
+        '<div class="status">Episode not found.</div>';
+    });
+
+  // Dark / light toggle
+  const btn = document.getElementById('toggle-btn');
+  function applyMode(mode) {
+    if (mode === 'light') {
+      document.body.classList.add('light');
+      btn.textContent = '\u263E Dark';
+    } else {
+      document.body.classList.remove('light');
+      btn.textContent = '\u2600 Light';
+    }
+  }
+  function toggleMode() {
+    const next = document.body.classList.contains('light') ? 'dark' : 'light';
+    localStorage.setItem('firefly-mode', next);
+    applyMode(next);
+  }
+  applyMode(localStorage.getItem('firefly-mode') || 'dark');
+</script>
+
+</body>
+</html>
