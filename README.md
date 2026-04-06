@@ -2,14 +2,16 @@
 ## Season One — "Same Sky, Different Dust"
 
 *Fan Fiction — Not for Commercial Distribution*
- —
+
+---
 
 Firefly deserved more. This is more.
 
 **Same Sky, Different Dust** is an original fan fiction continuation of the *Firefly*/*Serenity* universe, set in 2542 — twenty-four years after the events of the film. It is conceived as a stylised 3D animated series of ten episodes, fifteen to twenty minutes each.
 
 It is not a reboot. It is not a remix. It is the next thing.
- —
+
+---
 
 ## The Crew
 
@@ -20,7 +22,8 @@ It is not a reboot. It is not a remix. It is the next thing.
 **PIP TAM** — 22. Mechanic. Simon and Kaylee's son. Falls in love with this ship specifically.
 
 **JAYNE COBB** — 61. The anchor. The only one who was there before.
- —
+
+---
 
 ## Season One Episodes
 
@@ -36,7 +39,8 @@ It is not a reboot. It is not a remix. It is the next thing.
 | 08 | [Running](episodes/episode_08.md) | Complete |
 | 09 | [The Cavalry](episodes/episode_09.md) | Complete |
 | 10 | [The Ghost in the Machine](episodes/episode_10.md) | Complete |
- —
+
+---
 
 ## Resources
 
@@ -44,14 +48,16 @@ It is not a reboot. It is not a remix. It is the next thing.
 - [Context Document](docs/context_document.md) — The twenty-two year gap, full backstory
 - [Score and Sound](docs/score_and_sound.md) — Music and sound design guide
 - [Interactive Timeline](docs/timeline.html) — The full history of the verse, 2517–2542
- —
+
+---
 
 ## Canon
 
 **Locked sources:** Original *Firefly* series, *Serenity* (2005), *The Shepherd's Tale*, *Float Out*, *Leaves on the Wind*.
 
 **Non-canon to this project:** BOOM Studios *All-New Firefly* comics.
- —
+
+---
 
 ## Have Fun With This
 
@@ -67,11 +73,13 @@ The only rules:
 4. **Keep it shiny.**
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for the full guide.
- —
+
+---
 
 ## Disclaimer
 
 *Firefly: Legacy* is an unauthorised fan work. Not affiliated with, endorsed by, or connected to Joss Whedon, Mutant Enemy Productions, 20th Century Fox, Disney, Universal Pictures, ShadowMachine, or any other rights holder. No copyright infringement is intended. This project exists because Firefly deserved more. That's all.
- —
+
+---
 
 *"Same sky. Different dust. Still flying."*
