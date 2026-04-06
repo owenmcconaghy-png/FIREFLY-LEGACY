@@ -1,0 +1,10 @@
+# Source files
+*.docx
+*.zip
+
+# OS cruft
+.DS_Store
+Thumbs.db
+
+# Obsidian vault
+.obsidian/
